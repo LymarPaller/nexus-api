@@ -20,7 +20,7 @@ class CommentFactory extends Factory
     {
         return [
             //
-            'comment_description' => fake()->words(6, true),
+            'comment_description' => fake()->realText($maxNbChars = 20),
             'date_commented' => fake()->dateTimeThisMonth(),
             'user_id' => User::factory(),
             'post_id' => Post::factory(),

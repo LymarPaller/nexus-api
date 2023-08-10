@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Nette\Utils\Random;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -19,16 +20,32 @@ class UserFactory extends Factory
     {
 
         return [
-            'name' => fake()->name(),
+            'name' => fake()->name($gender = null),
             'username' => fake()->userName(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'profile_photo' => fake()->imageUrl(),
-            'cover_photo' => fake()->imageUrl(),
+            'password' => fake()->password($minLength = 6, $maxLength = 12),
+            'profile_photo' => fake()->imageUrl(
+                $width = 640,
+                $height = 480,
+                $category = null,
+                $randomize = true,
+                $word = null,
+                $gray = false,
+                $format = 'png'
+            ),
+            'cover_photo' => fake()->imageUrl(
+                $width = 640,
+                $height = 480,
+                $category = null,
+                $randomize = true,
+                $word = null,
+                $gray = false,
+                $format = 'png'
+            ),
             'city' => fake()->state(),
             'websites' => fake()->email(),
-            'introduction' => fake()->words(6, true),
-            'company' => fake()->words(2, true),
+            'introduction' => fake()->realText($maxNbChars = 20),
+            'company' => fake()->company(),
         ];
     }
 
