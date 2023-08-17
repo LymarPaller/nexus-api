@@ -17,7 +17,7 @@ class CommentController extends Controller
         $query = Comment::query();
 
         if (isset($request->postId)) {
-            $query->where('postId', $request->postId);
+            $query->where('post_id', $request->postId);
         }
         return CommentResource::collection($query->get());
         // return CommentResource::collection(Comment::all());
