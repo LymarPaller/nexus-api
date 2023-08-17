@@ -24,24 +24,8 @@ class UserFactory extends Factory
             'username' => fake()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'password' => fake()->password($minLength = 6, $maxLength = 12),
-            'profile_photo' => fake()->imageUrl(
-                $width = 640,
-                $height = 480,
-                $category = null,
-                $randomize = true,
-                $word = null,
-                $gray = false,
-                $format = 'png'
-            ),
-            'cover_photo' => fake()->imageUrl(
-                $width = 640,
-                $height = 480,
-                $category = null,
-                $randomize = true,
-                $word = null,
-                $gray = false,
-                $format = 'png'
-            ),
+            'profile_photo' => fake()->imageUrl(),
+            'cover_photo' => fake()->imageUrl(),
             'city' => fake()->state(),
             'websites' => fake()->email(),
             'introduction' => fake()->realText($maxNbChars = 20),

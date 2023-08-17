@@ -12,9 +12,15 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return CommentResource::collection(Comment::all());
+        $query = Comment::query();
+
+        if (isset($request->postId)) {
+            $query->where('postId', $request->postId);
+        }
+        return CommentResource::collection($query->get());
+        // return CommentResource::collection(Comment::all());
     }
 
     /**

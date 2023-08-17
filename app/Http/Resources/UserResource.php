@@ -26,6 +26,7 @@ class UserResource extends JsonResource
             'city' => $this->city,
             'websites' => $this->websites,
             'introduction' => $this->introduction,
+            'company' => $this->company,
         ];
     }
 }

@@ -14,7 +14,7 @@ class FollowerController extends Controller
      */
     public function index()
     {
-        return FollowerResource::collection(Follower::all());
+        return FollowerResource::collection(Follower::paginate());
     }
 
     /**
