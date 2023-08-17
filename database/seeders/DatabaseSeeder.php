@@ -26,10 +26,6 @@ class DatabaseSeeder extends Seeder
         ->create();
 
         User::factory()
-        ->has(
-            Post::factory(3)->hasComments(1)->hasLikes(1)
-        )
-        ->hasFollowers(1)
         ->create([
             'name' => 'Mark Suckerbig',
             'username' => 'touchmenot',
