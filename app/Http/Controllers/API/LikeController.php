@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LikeStoreRequest;
+use App\Http\Requests\LikeUpdateRequest;
 use App\Http\Resources\LikeResource;
 use App\Models\Like;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class LikeController extends Controller
     {
         return LikeResource::make(
             Like::create([
-                'user_id' => $request->userId,
+                'like_id' => $request->likeId,
                 'post_id' => $request->postId,
             ])
             );
@@ -58,9 +59,18 @@ class LikeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LikeUpdateRequest $request, Like $like)
     {
-        //
+        if(isset($request->likeId)) {
+            $like->like_id = $request->likeId;
+        }
+        if(isset($request->postId)) {
+            $like->post_id = $request->postId;
+        }
+
+        $like->save();
+
+        return LikeResource::make($like);
     }
 
     /**

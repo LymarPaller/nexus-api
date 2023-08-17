@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FollowerStoreRequest;
+use App\Http\Requests\FollowerUpdateRequest;
 use App\Http\Resources\FollowerResource;
 use App\Models\Follower;
 use Illuminate\Http\Request;
@@ -58,9 +59,18 @@ class FollowerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FollowerUpdateRequest $request, Follower $follower)
     {
-        //
+        if(isset($request->followUserId)) {
+            $follower->follow_user_id = $request->followUserId;
+        }
+        if(isset($request->followerUserId)) {
+            $follower->follower_user_id = $request->followerUserId;
+        }
+
+        $follower->save();
+
+        return FollowerResource::make($follower);
     }
 
     /**

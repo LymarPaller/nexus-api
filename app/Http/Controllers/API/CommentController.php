@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentStoreRequest;
+use App\Http\Requests\CommentUpdateRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -66,9 +67,25 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CommentUpdateRequest $request, Comment $comment)
     {
-        //
+        if(isset($request->commentDescription)) {
+            $comment->comment_description = $request->commentDescription;
+        }
+        if(isset($request->dateCommented)) {
+            $comment->date_commented = $request->dateCommented;
+        }
+        if(isset($request->userId)) {
+            $comment->user_id = $request->userId;
+        }
+        if(isset($request->postId)) {
+            $comment->post_id = $request->postId;
+        }
+
+
+        $comment->save();
+
+        return CommentResource::make($comment);
     }
 
     /**
