@@ -9,6 +9,11 @@ class Follower extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'followUser_id',
+        'followerUser_id',
+    ];
+
     public function followUser() {
         return $this->belongsTo(User::class);
     }

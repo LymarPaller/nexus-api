@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FollowerStoreRequest;
 use App\Http\Resources\FollowerResource;
 use App\Models\Follower;
 use Illuminate\Http\Request;
@@ -28,9 +29,14 @@ class FollowerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FollowerStoreRequest $request)
     {
-        //
+        return FollowerResource::make(
+            Follower::create([
+                'follow_user_id' => $request->followUserId,
+                'follower_user_id' => $request->followerUserId,
+            ])
+        );
     }
 
     /**

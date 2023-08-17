@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LikeStoreRequest;
 use App\Http\Resources\LikeResource;
 use App\Models\Like;
 use Illuminate\Http\Request;
@@ -28,9 +29,14 @@ class LikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LikeStoreRequest $request)
     {
-        //
+        return LikeResource::make(
+            Like::create([
+                'user_id' => $request->userId,
+                'post_id' => $request->postId,
+            ])
+            );
     }
 
     /**

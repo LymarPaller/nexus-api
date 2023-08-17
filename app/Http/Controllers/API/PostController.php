@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostStoreRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -28,9 +29,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        //
+        return PostResource::make(
+            Post::create([
+                'post_description' => $request->postDescription,
+                'img_post' => $request->imgPost,
+                'date_created' => $request->dateCreated,
+                'user_id' => $request->userId,
+            ])
+            );
     }
 
     /**

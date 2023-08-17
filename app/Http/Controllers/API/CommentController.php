@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentStoreRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -34,9 +35,16 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentStoreRequest $request)
     {
-        //
+        return CommentResource::make(
+            Comment::create([
+                 'comment_description' => $request->commentDescription,
+                 'date_commented' => $request->dateCommented,
+                 'user_id' => $request->userId,
+                 'post_id' => $request->postId,
+            ])
+            );
     }
 
     /**

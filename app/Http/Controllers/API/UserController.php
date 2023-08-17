@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -73,9 +74,42 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
+        if(isset($request->name)) {
+            $user->name = $request->name;
+        }
+        if(isset($request->username)) {
+            $user->username = $request->username;
+        }
+        if(isset($request->password)) {
+            $user->password = $request->password;
+        }
+        if(isset($request->email)) {
+            $user->email = $request->email;
+        }
+        if(isset($request->profilePhoto)) {
+            $user->profile_photo = $request->profilePhoto;
+        }
+        if(isset($request->coverPhoto)) {
+            $user->cover_photo = $request->coverPhoto;
+        }
+        if(isset($request->city)) {
+            $user->city = $request->city;
+        }
+        if(isset($request->websites)) {
+            $user->websites = $request->websites;
+        }
+        if(isset($request->introduction)) {
+            $user->introduction = $request->introduction;
+        }
+        if(isset($request->company)) {
+            $user->company = $request->company;
+        }
+
+        $user->save();
+
+        return UserResource::make($user);
     }
 
     /**
