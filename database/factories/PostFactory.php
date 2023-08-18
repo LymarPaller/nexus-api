@@ -20,7 +20,15 @@ class PostFactory extends Factory
         return [
             //
             'post_description' => fake()->words(5, true),
-            'img_post' => fake()->userName(),
+            'img_post' => fake()->imageUrl(
+                $width = 640,
+                $height = 480,
+                $category = null,
+                $randomize = true,
+                $word = null,
+                $gray = false,
+                $format = 'png'
+            ),
             'date_created' => fake()->dateTimeThisMonth(),
             'user_id' => User::factory(),
         ];
