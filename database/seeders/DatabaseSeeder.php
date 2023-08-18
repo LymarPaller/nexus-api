@@ -35,10 +35,10 @@ class DatabaseSeeder extends Seeder
             'username' => 'touchmenot',
             'email' => 'mark@example.com',
             'password' => 'override',
-            'profile_photo' => 'sampleimage.com',
-            'cover_photo' => 'sampleimage.com',
+            'profile_photo' => 'https://images.pexels.com/photos/895259/pexels-photo-895259.jpeg?auto=compress&cs=tinysrgb&w=600',
+            'cover_photo' => 'https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             'city' => 'Bacolod',
-            'websites' => 'Facebook.com',
+            'websites' => 'Instagram.com',
             'introduction' => 'Hello World',
             'company' => 'KodeGo',
         ]);
