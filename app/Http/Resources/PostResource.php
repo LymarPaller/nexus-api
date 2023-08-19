@@ -21,8 +21,12 @@ class PostResource extends JsonResource
             'imgPost' => $this->img_post,
             'dateCreated' => $this->date_created,
             'userId' => $this->user_id,
-            'user' => $this->user,
-            'comment' => $this->comments,
+            'user' => [
+                    'id' => $this->user['id'],
+                    'name' => $this->user['name'],
+                    'profile_photo' => $this->user['profile_photo'],
+                ],
+            // 'comment' => $this->comments,
         ];
     }
 }

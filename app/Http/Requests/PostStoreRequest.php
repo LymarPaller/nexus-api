@@ -26,7 +26,7 @@ class PostStoreRequest extends FormRequest
         return [
             'postDescription' => 'required',
             'imgPost' => '',
-            'dateCreated' => 'date_format:m/d/Y',
+            'dateCreated' => 'date_format:Y-m-d',
             'userId' => '',
         ];
     }

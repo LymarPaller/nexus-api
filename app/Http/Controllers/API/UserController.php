@@ -58,10 +58,26 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+
+    
+    //  public function show(User $user)
+    //  {
+    //      return UserResource::make(($user));
+    //  }
+
+    public function show($username)
     {
+        $user = User::firstWhere('username', $username);
+        // return User::firstWhere('username', $username);
         return UserResource::make(($user));
     }
+
+    // public function show(User $query)
+    // {
+    //     return User::firstWhere('username', $query);
+    //     // return UserResource::make(($user));
+    //     // return UserResource::make(($user));
+    // }
 
     /**
      * Show the form for editing the specified resource.

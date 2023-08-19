@@ -31,15 +31,15 @@ class DatabaseSeeder extends Seeder
         )
         ->hasFollowers(1)
         ->create([
-            'name' => 'Mark Suckerbig',
-            'username' => 'touchmenot',
-            'email' => 'mark@example.com',
+            'name' => 'Wanda Zurbano',
+            'username' => 'wandaring',
+            'email' => 'wanda@example.com',
             'password' => 'override',
-            'profile_photo' => 'https://images.pexels.com/photos/895259/pexels-photo-895259.jpeg?auto=compress&cs=tinysrgb&w=600',
+            'profile_photo' => 'https://images.pexels.com/photos/18025212/pexels-photo-18025212/free-photo-of-wanda-the-wonderdog.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             'cover_photo' => 'https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            'city' => 'Bacolod',
+            'city' => 'Raining in Manila',
             'websites' => 'Instagram.com',
-            'introduction' => 'Hello World',
+            'introduction' => 'Pawsitively picture purrfect!',
             'company' => 'KodeGo',
         ]);
     }
