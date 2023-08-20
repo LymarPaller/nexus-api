@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Post::factory(5)->hasLikes(2);
+
         User::factory(5)
         ->has(
             Post::factory(2)->hasComments(3)->hasLikes(2)

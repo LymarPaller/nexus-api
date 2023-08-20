@@ -21,7 +21,8 @@ class CommentResource extends JsonResource
             'dateCommented' => $this->date_commented,
             'userId' => $this->user_id,
             'postId' => $this->post_id,
-            'user' => $this->user,
+            'user' => UserRelationalResource::make($this->user),
+            // 'user' => $this->user,
             // 'user' => [
             //     'id' => $this->user['id'],
             //     'name' => $this->user['name'],

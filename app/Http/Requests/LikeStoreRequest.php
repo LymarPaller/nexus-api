@@ -24,8 +24,8 @@ class LikeStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'userId' => '',
-            'postId' => '',
+            'userId' => 'required',
+            'postId' => 'required',
         ];
     }
 

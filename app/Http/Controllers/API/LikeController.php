@@ -14,9 +14,17 @@ class LikeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return LikeResource::collection(Like::all());
+        
+        {   
+            $query = Like::query();
+    
+            if (isset($request->postId)) {
+                $query->where('post_id', $request->postId);
+            }
+            return LikeResource::collection($query->get());
+        }
     }
 
     /**

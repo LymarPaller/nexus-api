@@ -21,11 +21,12 @@ class PostResource extends JsonResource
             'imgPost' => $this->img_post,
             'dateCreated' => $this->date_created,
             'userId' => $this->user_id,
-            'user' => [
-                    'id' => $this->user['id'],
-                    'name' => $this->user['name'],
-                    'profile_photo' => $this->user['profile_photo'],
-                ],
+            'user' => UserRelationalResource::make($this->user),
+            // 'user' => [
+            //         'id' => $this->user['id'],
+            //         'name' => $this->user['name'],
+            //         'profilePhoto' => $this->user['profile_photo'],
+            //     ],
             // 'comments' => $this->comments,
             // 'comment' => [
             //     'id' => $this->comments['id'],
