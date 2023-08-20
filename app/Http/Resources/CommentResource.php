@@ -21,12 +21,13 @@ class CommentResource extends JsonResource
             'dateCommented' => $this->date_commented,
             'userId' => $this->user_id,
             'postId' => $this->post_id,
-            'user' => [
-                'id' => $this->user['id'],
-                'name' => $this->user['name'],
-                'username' => $this->user['username'],
-                'profilePhoto' => $this->user['profile_photo'],
-            ],
+            'user' => $this->user,
+            // 'user' => [
+            //     'id' => $this->user['id'],
+            //     'name' => $this->user['name'],
+            //     'username' => $this->user['username'],
+            //     'profilePhoto' => $this->user['profile_photo'],
+            // ],
         ];
     }
 }

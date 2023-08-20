@@ -25,7 +25,7 @@ class CommentStoreRequest extends FormRequest
     {
         return [
             'commentDescription' => 'required',
-            'dateCommented' => 'date_format:m/d/Y',
+            'dateCommented' => 'date_format:Y-m-d',
             'userId' => '',
             'postId' => '',
         ];

@@ -9,7 +9,7 @@ class Comment extends Model
 {
     protected $fillable = [
         'comment_description',
-        'date_dommented',
+        'date_commented',
         'user_id',
         'post_id',
     ];
