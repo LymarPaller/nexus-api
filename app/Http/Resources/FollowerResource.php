@@ -14,11 +14,11 @@ class FollowerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'followUserId' => $this->follow_user_id,
             'followerUserId' => $this->follower_user_id,
+            'followerUser' => UserRelationalResource::make($this->followerProfile),
         ];
     }
 }

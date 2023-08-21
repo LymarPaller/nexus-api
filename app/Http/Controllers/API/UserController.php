@@ -60,17 +60,17 @@ class UserController extends Controller
      */
 
     
-    //  public function show(User $user)
-    //  {
-    //      return UserResource::make(($user));
-    //  }
+     public function show(User $user)
+     {
+         return UserResource::make(($user));
+     }
 
-    public function show($username)
-    {
-        $user = User::firstWhere('username', $username);
-        // return User::firstWhere('username', $username);
-        return UserResource::make(($user));
-    }
+    // public function show($username)
+    // {
+    //     $user = User::firstWhere('username', $username);
+    //     // return User::firstWhere('username', $username);
+    //     return UserResource::make(($user));
+    // }
 
     // public function show(User $query)
     // {
