@@ -18,13 +18,24 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)){
             $user = User::where('username', $request->username)->first();
-            
+
             $token = $user->createToken('token', ['getUsers']);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Successfully logged in',
-                'token' => $token->plainTextToken
+                'user' => [
+                    'id' => $user->id,
+                    'username' => $user->username,
+                    'name' => $user->name,
+                    'profilePhoto' => $user->profile_photo,
+                    'coverPhoto' => $user->cover_photo,
+                    'city' => $user->city,
+                    'websites' => $user->websites,
+                    'introduction' => $user->introduction,
+                    'company' => $user->company,
+                    'token' => $token->plainTextToken
+                ],
             ]);
         } else {
             return response()->json([

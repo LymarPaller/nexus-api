@@ -14,9 +14,14 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return PostResource::collection(Post::all());
+    public function index(Request $request)
+    {   
+        $query = Post::query();
+
+        if (isset($request->userId)) {
+            $query->where('user_id', $request->userId);
+        }
+        return PostResource::collection($query->get());
     }
 
     /**

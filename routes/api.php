@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\API\CommentController;
 use App\Http\Controllers\API\FollowerController;
 use App\Http\Controllers\API\LikeController;
@@ -26,8 +27,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::apiResource('users', UserController::class);
+    Route::apiResource('users', UserController::class);
     Route::apiResource('follower', FollowerController::class);
     Route::apiResource('post', PostController::class);
     Route::apiResource('comments', CommentController::class);
     Route::apiResource('like', LikeController::class);
+    
+    // Route::group(['prefix' => 'users'], function(){
+    //     Route::get('/', [UserController::class, 'index'])->middleware(['auth:sanctum']);
+    //     Route::get('/{id}', [UserController::class, 'show'])->middleware(['auth:sanctum']);
+    //     Route::post('/', [UserController::class, 'store']);
+    //     Route::patch('/{id}', [UserController::class, 'update']);
+    //     Route::delete('/{id}', [UserController::class, 'destroy']);
+    // });
+
 });
