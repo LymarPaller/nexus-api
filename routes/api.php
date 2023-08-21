@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function () {
+    Route::post('/login', [AuthController::class, 'login']);
     Route::apiResource('users', UserController::class);
     Route::apiResource('follower', FollowerController::class);
     Route::apiResource('post', PostController::class);
