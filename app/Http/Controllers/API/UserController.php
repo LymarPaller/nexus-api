@@ -105,10 +105,24 @@ class UserController extends Controller
             $user->email = $request->email;
         }
         if(isset($request->profilePhoto)) {
-            $user->profile_photo = $request->profilePhoto;
+            if ($request->hasFile('profilePhoto')) {
+                $file = $request->file('profilePhoto');
+                $fileName = $user->id . 'profile.' . $file->getClientOriginalExtension();
+                $formatName = str_replace(' ', '', $fileName);
+                // $path = $file->store('images'); // This will store the file in the 'storage/app/uploads' directory
+                $file->move('images', $formatName);
+                $user->profile_photo = $formatName;
+            }
         }
         if(isset($request->coverPhoto)) {
-            $user->cover_photo = $request->coverPhoto;
+            if ($request->hasFile('coverPhoto')) {
+                $file = $request->file('coverPhoto');
+                $fileName = $user->id . 'cover.' . $file->getClientOriginalExtension();
+                $formatName = str_replace(' ', '', $fileName);
+                // $path = $file->store('images'); // This will store the file in the 'storage/app/uploads' directory
+                $file->move('images', $formatName);
+                $user->cover_photo = $formatName;
+            };
         }
         if(isset($request->city)) {
             $user->city = $request->city;
