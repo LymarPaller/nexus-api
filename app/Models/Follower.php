@@ -22,4 +22,8 @@ class Follower extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function followerProfile() {
+        return $this->belongsTo(User::class, 'follower_user_id');
+    }
+
 }

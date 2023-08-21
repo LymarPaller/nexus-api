@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         ->has(
             Post::factory(3)->hasComments(1)->hasLikes(1)
         )
-        ->hasFollowers(1)
+        ->hasFollowers(10)
         ->create([
             'name' => 'Wanda Zurbano',
             'username' => 'wandaring',

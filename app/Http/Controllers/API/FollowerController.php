@@ -14,9 +14,14 @@ class FollowerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return FollowerResource::collection(Follower::paginate());
+    public function index(Request $request)
+    {   
+        $query = Follower::query();
+
+        if (isset($request->followUserId)) {
+            $query->where('follow_user_id', $request->followUserId);
+        }
+        return FollowerResource::collection($query->get());
     }
 
     /**
