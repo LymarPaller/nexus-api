@@ -21,9 +21,16 @@ class UserController extends Controller
         if (isset($request->username)) {
             $query->where('username', $request->username);
         }
+
+        if (isset($request->name)) {
+            $query->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        
+        if (isset($request->email)) {
+            $query->where('email', $request->email);
+        }
+
         return UserResource::collection($query->get());
-        // return UserResource::collection(User::all());
-        // return UserResource::collection(User::paginate());
     }
 
     /**
