@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Http\Resources\PostResource;
+use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
+use Exception;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -37,6 +40,12 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
+        // if ($request->hasFile('thumbnail')) {
+        //     $file = $request->file('thumbnail');
+
+        //     $fileName = time() . '-' . $file->getClientOriginalName();
+        //     $file->storePubliclyAs('public/images', $fileName);
+        // }
         return PostResource::make(
             Post::create([
                 'post_description' => $request->postDescription,
@@ -90,11 +99,25 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        try {
+            // Delete likes associated with the post
+            Like::where('post_id', $post->id)->delete();
+        
+            // Delete comments associated with the post
+            Comment::where('post_id', $post->id)->delete();
+        
+            // Delete the post
+            $post->delete();
 
-        return response()->json([
-            'sucess' => true,
-            'message' => 'Successfully Deleted'
-        ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfully deleted'
+            ]);
+        } catch (Exception $err) {
+            return response()->json([
+                'success' => false,
+                'message' => $err
+            ]);
+        }
     }
 }

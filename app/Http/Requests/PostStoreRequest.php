@@ -27,7 +27,7 @@ class PostStoreRequest extends FormRequest
             'postDescription' => 'required',
             'imgPost' => '',
             'dateCreated' => 'date_format:Y-m-d',
-            'userId' => '',
+            'userId' => 'required',
         ];
     }
     protected function failedValidation(Validator $validator)

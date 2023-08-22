@@ -19,7 +19,7 @@ class PostFactory extends Factory
     {
         return [
             //
-            'post_description' => fake()->words(5, true),
+            'post_description' => fake()->sentence($nbWords = 6, $variableNbWords = true),
             'img_post' => fake()->imageUrl(
                 $width = 640,
                 $height = 480,

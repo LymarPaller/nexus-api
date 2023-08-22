@@ -24,8 +24,8 @@ class FollowerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'followUserId' => '',
-            'followerUserId' => '',
+            'followUserId' => 'required',
+            'followerUserId' => 'required',
         ];
     }
 
